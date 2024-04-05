@@ -7,7 +7,6 @@
 import os
 from threading import Thread
 from multiprocessing import Process
-import time
 from zipfile import ZipFile, ZIP_DEFLATED
 import modules.confMgr.load_conf_file as conf
 

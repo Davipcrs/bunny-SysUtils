@@ -11,3 +11,8 @@ def loadConfFile() -> dict:
 def getBackupDataFromConf() -> dict:
     data = loadConfFile()
     return data.get("backup_conf")
+
+
+def getServiceMgrDataFromConf() -> dict:
+    data = loadConfFile()
+    return data.get("service_manager_conf")

@@ -4,13 +4,16 @@ import json
 def createConfFile():
     configDict = {
         "backup_conf": {
-            "folders": ["E:\Teste"],
+            "folders": [],
             "outputs": [],
-            "bkp_frequency": 0,
-            "enable": False,
+            "day_bkp_frequency": 0,
+            "enable": True,
+            "init_date": "DD/MM/YYYY",
 
         },
-        "service_manager_conf": {},
+        "service_manager_conf": {
+
+        },
     }
     with open("config.json", "w") as config:
         json_obj = json.dumps(configDict, indent=4)
