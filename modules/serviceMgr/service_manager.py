@@ -1,4 +1,5 @@
 from win32 import win32service as winS
+from service_defs import Service
 
 
 class ServiceManagement():
@@ -26,7 +27,14 @@ class ServiceManagement():
             scHandle, service_name, winS.SC_MANAGER_ENUMERATE_SERVICE)
         return winS.QueryServiceStatusEx(serviceHandle)
 
-    def createService(self):
+    def createService(self, Service: Service):
+        """
+        Recive a Service Object and Create the Service.
+        """
+        scHandle = winS.OpenSCManager(None, None, winS.SC_MANAGER_CONNECT)
+
+        # https://timgolden.me.uk/pywin32-docs/win32service__CreateService_meth.html
+        # Create a ServiceDefine Class to input use for creating the service.
         pass
 
     def removeService(self):
@@ -40,6 +48,3 @@ class ServiceManagement():
 
     def stopService(self):
         pass
-
-
-print(ServiceManagement().getServiceStatus("BDAppSrv"))
