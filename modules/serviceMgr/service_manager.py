@@ -17,11 +17,16 @@ class ServiceManagement():
         # https://timgolden.me.uk/pywin32-docs/win32service__EnumServicesStatus_meth.html
         return winS.EnumServicesStatus(service_handler)
 
-    def getServiceStatus(self):
-        pass
+    def getServiceStatus(self, service_name: str):
+        """
+        Function to return a service Status for one Specified service.
 
-    def setServiceStatus(self):
-        pass
+        To use this function is needed ADMIN RIGHTS or OWNERSHIP of The Service.
+        """
+        scHandle = winS.OpenSCManager(None, None, winS.SC_MANAGER_CONNECT)
+        serviceHandle = winS.OpenService(
+            scHandle, service_name, winS.SC_MANAGER_ALL_ACCESS)  # REQUIRE ADMIN RIGHTS
+        return winS.QueryServiceStatusEx(serviceHandle)
 
     def createService(self):
         pass
@@ -31,3 +36,12 @@ class ServiceManagement():
 
     def editService(self):
         pass
+
+    def startService(self):
+        pass
+
+    def stopService(self):
+        pass
+
+
+print(ServiceManagement().getServiceStatus("BDAppSrv"))

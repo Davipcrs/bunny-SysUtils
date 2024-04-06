@@ -9,10 +9,6 @@ def createConfFile():
             "day_bkp_frequency": 0,
             "enable": True,
             "init_date": "DD/MM/YYYY",
-
-        },
-        "service_manager_conf": {
-
         },
     }
     with open("config.json", "w") as config:
