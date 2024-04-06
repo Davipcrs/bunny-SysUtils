@@ -20,12 +20,10 @@ class ServiceManagement():
     def getServiceStatus(self, service_name: str):
         """
         Function to return a service Status for one Specified service.
-
-        To use this function is needed ADMIN RIGHTS or OWNERSHIP of The Service.
         """
         scHandle = winS.OpenSCManager(None, None, winS.SC_MANAGER_CONNECT)
         serviceHandle = winS.OpenService(
-            scHandle, service_name, winS.SC_MANAGER_ALL_ACCESS)  # REQUIRE ADMIN RIGHTS
+            scHandle, service_name, winS.SC_MANAGER_ENUMERATE_SERVICE)
         return winS.QueryServiceStatusEx(serviceHandle)
 
     def createService(self):
