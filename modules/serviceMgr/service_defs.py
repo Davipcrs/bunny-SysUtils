@@ -5,11 +5,10 @@ class Service():
     def __init__(self, service_name: str, service_display_name: str, binary_path: str) -> None:
         self.service_name = service_name
         self.service_display_name = service_display_name
-        self.service_type = winS.SERVICE_INTERACTIVE_PROCESS
+        self.service_type = winS.SERVICE_WIN32_OWN_PROCESS
         self.service_start_type = winS.SERVICE_AUTO_START
-        self.service_error_control = None
+        self.service_error_type = winS.SERVICE_ERROR_SEVERE
         self.binary_path = binary_path
-        pass
 
     def setServiceType(self, type: int) -> None:
         """
@@ -51,5 +50,5 @@ class Service():
         """
         pass
 
-    def setServiceErrorControl(self, type: int) -> None:
+    def setServiceErrorType(self, type: int) -> None:
         pass

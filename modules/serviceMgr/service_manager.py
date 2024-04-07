@@ -1,5 +1,6 @@
 from win32 import win32service as winS
-from service_defs import Service
+from modules.serviceMgr.service_defs import Service
+# from service_defs import Service
 
 
 class ServiceManagement():
@@ -31,7 +32,11 @@ class ServiceManagement():
         """
         Recive a Service Object and Create the Service.
         """
-        scHandle = winS.OpenSCManager(None, None, winS.SC_MANAGER_CONNECT)
+        scHandle = winS.OpenSCManager(
+            None, None, winS.SC_MANAGER_CREATE_SERVICE)
+        print(Service.binary_path)
+        winS.CreateService(scHandle, Service.service_name, Service.service_display_name, winS.SERVICE_ALL_ACCESS, Service.service_type,
+                           Service.service_start_type, Service.service_error_type, Service.binary_path, None, False, None, None, None)
 
         # https://timgolden.me.uk/pywin32-docs/win32service__CreateService_meth.html
         # Create a ServiceDefine Class to input use for creating the service.
@@ -48,3 +53,9 @@ class ServiceManagement():
 
     def stopService(self):
         pass
+
+
+"""
+ServiceManagement().createService(Service=Service(
+    "Teste", "Teste de serviço", "E:\\src\\python\\Automation\\main.py"))
+"""
