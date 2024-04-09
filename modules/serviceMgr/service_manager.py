@@ -1,6 +1,6 @@
 from win32 import win32service as winS
-from modules.serviceMgr.service_defs import Service
-# from service_defs import Service
+# from modules.serviceMgr.service_defs import Service
+from service_defs import Service
 
 
 class ServiceManagement():
@@ -34,16 +34,28 @@ class ServiceManagement():
         """
         scHandle = winS.OpenSCManager(
             None, None, winS.SC_MANAGER_CREATE_SERVICE)
-        print(Service.binary_path)
-        winS.CreateService(scHandle, Service.service_name, Service.service_display_name, winS.SERVICE_ALL_ACCESS, Service.service_type,
-                           Service.service_start_type, Service.service_error_type, Service.binary_path, None, False, None, None, None)
+        # print(Service.binary_path)
+        srvHandle = winS.CreateService(scHandle, Service.service_name, Service.service_display_name, winS.SERVICE_START, Service.service_type,
+                                       Service.service_start_type, Service.service_error_type, Service.binary_path, None, False, None, None, None)
 
         # https://timgolden.me.uk/pywin32-docs/win32service__CreateService_meth.html
-        # Create a ServiceDefine Class to input use for creating the service.
-        pass
+        # https://learn.microsoft.com/pt-br/windows/win32/api/winsvc/nf-winsvc-createservicea
+        return srvHandle
 
-    def removeService(self):
-        pass
+    def deleteService(self, service_name: str):
+        """
+        Delete Service Fuction
+
+        Input: service_name: str (The name of the service that you want to delete)
+        """
+        # https://timgolden.me.uk/pywin32-docs/win32service__DeleteService_meth.html
+        SERVICE_DELETE_CONST = 65536
+        # refeer to: https://learn.microsoft.com/pt-br/windows/win32/services/service-security-and-access-rights
+        scHandle = winS.OpenSCManager(
+            None, None, winS.SC_MANAGER_CONNECT)
+        serviceHandle = winS.OpenService(
+            scHandle, service_name, SERVICE_DELETE_CONST)
+        winS.DeleteService(serviceHandle)
 
     def editService(self):
         pass
@@ -59,3 +71,4 @@ class ServiceManagement():
 ServiceManagement().createService(Service=Service(
     "Teste", "Teste de serviço", "E:\\src\\python\\Automation\\main.py"))
 """
+# ServiceManagement().deleteService("Teste")
