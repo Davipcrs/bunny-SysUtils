@@ -57,13 +57,28 @@ class ServiceManagement():
             scHandle, service_name, SERVICE_DELETE_CONST)
         winS.DeleteService(serviceHandle)
 
+    def startService(self, service_name: str):
+        """
+        Start Service Fuction
+
+        Input: service_name: str (The name of the service that you want to start)
+        """
+        scHandle = winS.OpenSCManager(None, None, winS.SC_MANAGER_CONNECT)
+        serviceHandle = winS.OpenService(
+            scHandle, service_name, winS.SERVICE_START)
+
+        winS.StartService(serviceHandle)
+        return
+
+    def stopService(self,  service_name: str):
+        scHandle = winS.OpenSCManager(None, None, winS.SC_MANAGER_CONNECT)
+        serviceHandle = winS.OpenService(
+            scHandle, service_name, winS.SERVICE_CHANGE_CONFIG)
+
+        winS.ControlService(serviceHandle, winS.SERVICE_STOP)
+        return
+
     def editService(self):
-        pass
-
-    def startService(self):
-        pass
-
-    def stopService(self):
         pass
 
 
