@@ -2,7 +2,7 @@ import json
 
 
 def loadConfFile() -> dict:
-    with open("config.json", "r") as conf:
+    with open("backup_conf.json", "r") as conf:
         data = json.load(conf)
         conf.close()
     return data

@@ -58,5 +58,5 @@ class SysInfo():
         pass
 
 
-print(SysInfo().getHardwareInfo()[2])
+# print(SysInfo().getHardwareInfo()[2])
 # SysInfo().getOSInfo()
