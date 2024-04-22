@@ -2,6 +2,8 @@ from win32 import win32service as winS
 
 
 class Service():
+    """Service 'Data' class"""
+
     def __init__(self, service_name: str, service_display_name: str, binary_path: str) -> None:
         self.service_name = service_name
         self.service_display_name = service_display_name

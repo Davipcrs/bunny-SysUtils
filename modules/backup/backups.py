@@ -13,13 +13,15 @@ import modules.confMgr.load_conf_file as conf
 
 class BackupUtils():
     def __init__(self):
-        self.currentFile = 0
-        self.totalFiles = 0
-        self.currentFileName = ""
+        self.currentFile = 0  # Refatorar para um Array
+        self.totalFiles = 0  # Refatorar para um Array
+        self.currentFileName = ""  # Refatorar para um Array
+        self.numJobs = 0
         self.inProgress = True
 
     def _countFiles(self, input_dir: str):
         """Count the total file while zip"""
+        # Refatorar para um Array
         totalFiles = 0
         for _, dirname, files in os.walk(input_dir):
             totalFiles += len(files) + len(dirname)
@@ -54,23 +56,27 @@ class BackupUtils():
 
         This function retrieves the folders from a json config file, for info see the confMgr Module.
         """
-        procs = []
-        data = conf.getBackupDataFromConf()
-        folders = data.get("folders")
-        outputs = data.get("outputs")
+        procs = []  # Multiprocess ID arrays
+        data = conf.getBackupDataFromConf()  # Load Conf file
+        folders = data.get("folders")  # Retrieve Data
+        outputs = data.get("outputs")  # Retrieve Data
+
+        # Error Checks:
         if (len(folders) != len(outputs)):
             return "The 'folders' and  'outputs' aren't equals, so the zip folder can't be created"
 
         if (data.get("enable") == False):
             return "The Backup is disable"
 
-        i = 0
+        i = 0  # Process "ID"
         for i in range(len(folders)):
+            # Crete the process
             proc = Process(target=self.startBackup,
                            args=(folders[i], outputs[i]))
             procs.append(proc)
             i = i + 1
         for proc in procs:
+            # Start The Process
             proc.start()
 
         return procs

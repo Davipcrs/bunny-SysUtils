@@ -11,15 +11,28 @@ class SysInfo():
 
         pass
 
-    def getHardwareInfo():
-        pass
+    def getHardwareInfo(self) -> list[wmi._wmi_object]:
+        info = []
+        for data in self.c.Win32_ComputerSystem():
+            # print(os)
+            # print(os.Caption)
+            info.append(data)
+            # print(info)
+        for data in self.c.Win32_SystemEnclosure():
+            info.append(data)
 
-    def getOSInfo(self) -> wmi._wmi_object:
+        for data in self.c.Win32_Processor():
+            info.append(data)
+
+        return info
+
+    def getOSInfo(self) -> list[wmi._wmi_object]:
         """
-        Return a _wmi_object that return a dictonary like data type
+        Return a List of _wmi_object 
+        The _wmi_object when accessed returns a dictonary-like data Type
 
         For accessing the data you can use the ."Function"
-        Example: SysInfo().getOSInfo().Caption -> Microsoft Windows 11 Home Single Language (Or your OS Type)
+        Example: SysInfo().getOSInfo()[0].Caption -> Microsoft Windows 11 Home Single Language (Or your OS Type)
         """
         info = []
         for os in self.c.Win32_OperatingSystem():
@@ -27,7 +40,7 @@ class SysInfo():
             # print(os.Caption)
             info.append(os)
             # print(info)
-        return info[0]
+        return info
 
     def getSoftwareInstalledInfo():
         pass
@@ -45,5 +58,5 @@ class SysInfo():
         pass
 
 
-print(SysInfo().getOSInfo())
+print(SysInfo().getHardwareInfo()[2])
 # SysInfo().getOSInfo()
