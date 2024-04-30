@@ -70,14 +70,18 @@ class SysInfo():
 
         return info
 
-    def getSysInfo(self):
-        self.getNetworkInfo()
-        self.getHardwareInfo()
-        self.getOSInfo()
-        self.getSoftwareInstalledInfo()
-        self.getUsersInfo()
+    def getSysInfo(self) -> dict:
+        """
+        Wrapper of all functions with useful data to be exported to a Dict
+        """
 
-        pass
+        nInfo = self.getNetworkInfo()
+        hInfo = self.getHardwareInfo()
+        oInfo = self.getOSInfo()
+        sInfo = self.getSoftwareInstalledInfo()
+        uInfo = self.getUsersInfo()
+
+        return dict()
 
 
 # print(SysInfo().getHardwareInfo()[2])

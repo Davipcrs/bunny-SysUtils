@@ -319,15 +319,15 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout = QHBoxLayout()
         self.horizontalLayout.setObjectName(u"horizontalLayout")
-        self.pushButton_2 = QPushButton(self.ServiceTab)
-        self.pushButton_2.setObjectName(u"pushButton_2")
+        self.StartServiceButton = QPushButton(self.ServiceTab)
+        self.StartServiceButton.setObjectName(u"StartServiceButton")
 
-        self.horizontalLayout.addWidget(self.pushButton_2)
+        self.horizontalLayout.addWidget(self.StartServiceButton)
 
-        self.pushButton = QPushButton(self.ServiceTab)
-        self.pushButton.setObjectName(u"pushButton")
+        self.AddServiceButton = QPushButton(self.ServiceTab)
+        self.AddServiceButton.setObjectName(u"AddServiceButton")
 
-        self.horizontalLayout.addWidget(self.pushButton)
+        self.horizontalLayout.addWidget(self.AddServiceButton)
 
 
         self.verticalLayout_3.addLayout(self.horizontalLayout)
@@ -406,29 +406,29 @@ class Ui_MainWindow(object):
         self.gridLayout_3.setObjectName(u"gridLayout_3")
         self.horizontalLayout_4 = QHBoxLayout()
         self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
-        self.pushButton_5 = QPushButton(self.BackupTab)
-        self.pushButton_5.setObjectName(u"pushButton_5")
+        self.searchFolderButton = QPushButton(self.BackupTab)
+        self.searchFolderButton.setObjectName(u"searchFolderButton")
 
-        self.horizontalLayout_4.addWidget(self.pushButton_5)
+        self.horizontalLayout_4.addWidget(self.searchFolderButton)
 
         self.verticalLayout_4 = QVBoxLayout()
         self.verticalLayout_4.setObjectName(u"verticalLayout_4")
-        self.listWidget_2 = QListWidget(self.BackupTab)
-        self.listWidget_2.setObjectName(u"listWidget_2")
+        self.backupList = QListWidget(self.BackupTab)
+        self.backupList.setObjectName(u"backupList")
 
-        self.verticalLayout_4.addWidget(self.listWidget_2)
+        self.verticalLayout_4.addWidget(self.backupList)
 
         self.horizontalLayout_3 = QHBoxLayout()
         self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
-        self.pushButton_4 = QPushButton(self.BackupTab)
-        self.pushButton_4.setObjectName(u"pushButton_4")
+        self.bkpOkButton = QPushButton(self.BackupTab)
+        self.bkpOkButton.setObjectName(u"bkpOkButton")
 
-        self.horizontalLayout_3.addWidget(self.pushButton_4)
+        self.horizontalLayout_3.addWidget(self.bkpOkButton)
 
-        self.pushButton_3 = QPushButton(self.BackupTab)
-        self.pushButton_3.setObjectName(u"pushButton_3")
+        self.bkpCancelButton = QPushButton(self.BackupTab)
+        self.bkpCancelButton.setObjectName(u"bkpCancelButton")
 
-        self.horizontalLayout_3.addWidget(self.pushButton_3)
+        self.horizontalLayout_3.addWidget(self.bkpCancelButton)
 
 
         self.verticalLayout_4.addLayout(self.horizontalLayout_3)
@@ -474,12 +474,12 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
         self.endpointNameLabel.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
         self.endpointCountLabel.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
-        self.pushButton_2.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
-        self.pushButton.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
+        self.StartServiceButton.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
+        self.AddServiceButton.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.ServiceTab), QCoreApplication.translate("MainWindow", u"Service", None))
-        self.pushButton_5.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
-        self.pushButton_4.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
-        self.pushButton_3.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
+        self.searchFolderButton.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
+        self.bkpOkButton.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
+        self.bkpCancelButton.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.BackupTab), QCoreApplication.translate("MainWindow", u"Backup", None))
         self.menuFIle.setTitle(QCoreApplication.translate("MainWindow", u"FIle", None))
         self.menuView.setTitle(QCoreApplication.translate("MainWindow", u"View", None))
