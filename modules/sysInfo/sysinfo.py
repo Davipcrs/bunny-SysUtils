@@ -8,10 +8,19 @@ class SysInfo():
         self.c = wmi.WMI(hostname)
 
     def getNetworkInfo(self):
+        pass
 
+    def getUsersInfo():
         pass
 
     def getHardwareInfo(self) -> list[wmi._wmi_object]:
+        """
+        Return a List of _wmi_object contaning Hardware info
+        The _wmi_object when accessed returns a dictonary-like data Type
+
+        For accessing the data you can use the ."Function"
+        Example: SysInfo().getHardwareInfo()[0].CreationClassName -> "Win32_ComputerSystem"
+        """
         info = []
         for data in self.c.Win32_ComputerSystem():
             # print(os)
@@ -24,11 +33,14 @@ class SysInfo():
         for data in self.c.Win32_Processor():
             info.append(data)
 
+        for data in self.c.Win32_Bios():
+            info.append(data)
+
         return info
 
     def getOSInfo(self) -> list[wmi._wmi_object]:
         """
-        Return a List of _wmi_object 
+        Return a List of _wmi_object contaning basic OS info.
         The _wmi_object when accessed returns a dictonary-like data Type
 
         For accessing the data you can use the ."Function"
@@ -42,11 +54,21 @@ class SysInfo():
             # print(info)
         return info
 
-    def getSoftwareInstalledInfo():
-        pass
+    def getSoftwareInstalledInfo(self):
+        """
+        Requested to have ADMIN RIGHTS
 
-    def getUsersInfo():
-        pass
+        Return a List of _wmi_object contaning installed Software info
+        The _wmi_object when accessed returns a dictonary-like data Type
+
+        For accessing the data you can use the ."Function"
+        Example: SysInfo().getSoftwareInstalledInfo()[0].Name-> Python 3.12.1 Test Suite (64-bit)
+        """
+        info = []
+        for data in self.c.Win32_InstalledWin32Program():
+            info.append(data)
+
+        return info
 
     def getSysInfo(self):
         self.getNetworkInfo()
@@ -59,4 +81,5 @@ class SysInfo():
 
 
 # print(SysInfo().getHardwareInfo()[2])
-# SysInfo().getOSInfo()
+for info in SysInfo().getSoftwareInstalledInfo():
+    print(info)

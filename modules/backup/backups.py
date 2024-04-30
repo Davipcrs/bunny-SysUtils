@@ -5,7 +5,6 @@
 # ============================================
 
 import os
-from threading import Thread
 from multiprocessing import Process
 from zipfile import ZipFile, ZIP_DEFLATED
 import modules.confMgr.load_conf_file as conf
@@ -44,6 +43,7 @@ class BackupUtils():
                 for file in files:
                     filename = os.path.join(base, file)
                     self.currentFileName[job_num] = filename
+                    # Check the usage of pipes to modify the main process Data
                     self.currentFile[job_num] = self.currentFile[job_num] + 1
                     zipfolder.write(filename)
 

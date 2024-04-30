@@ -2,6 +2,8 @@ from win32 import win32service as winS
 from modules.serviceMgr.service_defs import Service
 # from service_defs import Service
 
+# Refactor later: Support remote computers management
+
 
 class ServiceManagement():
     def getAllServicesStatus(self) -> tuple:
