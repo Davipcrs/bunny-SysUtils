@@ -11,7 +11,7 @@ def createConfFile():
             "init_date": "DD/MM/YYYY",
         },
     }
-    with open("conf.json", "w") as config:
+    with open("config.json", "w") as config:
         json_obj = json.dumps(configDict, indent=4)
         config.write(json_obj)
 
