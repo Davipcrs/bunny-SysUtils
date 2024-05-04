@@ -252,8 +252,8 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_3 = QVBoxLayout()
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
-        self.listWidget = QListWidget(self.ServiceTab)
-        self.listWidget.setObjectName(u"listWidget")
+        self.serviceList = QListWidget(self.ServiceTab)
+        self.serviceList.setObjectName(u"serviceList")
         palette2 = QPalette()
         palette2.setBrush(QPalette.Active, QPalette.WindowText, brush)
         palette2.setBrush(QPalette.Active, QPalette.Button, brush1)
@@ -312,10 +312,10 @@ class Ui_MainWindow(object):
         palette2.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush8)
 #endif
         palette2.setBrush(QPalette.Disabled, QPalette.Accent, brush9)
-        self.listWidget.setPalette(palette2)
-        self.listWidget.setAutoFillBackground(True)
+        self.serviceList.setPalette(palette2)
+        self.serviceList.setAutoFillBackground(True)
 
-        self.verticalLayout_3.addWidget(self.listWidget)
+        self.verticalLayout_3.addWidget(self.serviceList)
 
         self.horizontalLayout = QHBoxLayout()
         self.horizontalLayout.setObjectName(u"horizontalLayout")

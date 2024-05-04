@@ -1,11 +1,15 @@
 # https://learn.microsoft.com/en-us/windows/win32/wmisdk/wmi-tasks-for-scripts-and-applications
 # https://medium.com/@marcovit87/pywin32-and-wmi-windows-mangement-instrumentation-navigating-windows-os-with-python-4a73bfcce59a#:~:text=Windows%20Management%20Instrumentation%20(WMI)%20is,of%20the%20Windows%20API%20functions.
 import wmi
+import platform
 
 
 class SysInfo():
     def __init__(self, hostname: str = ""):
         self.c = wmi.WMI(hostname)
+
+    def getHostname(self):
+        return platform.uname().node
 
     def getNetworkInfo(self):
         pass
@@ -85,5 +89,5 @@ class SysInfo():
 
 
 # print(SysInfo().getHardwareInfo()[2])
-for info in SysInfo().getSoftwareInstalledInfo():
-    print(info)
+# for info in SysInfo().getSoftwareInstalledInfo():
+#    print(info)

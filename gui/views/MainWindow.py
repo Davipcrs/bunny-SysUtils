@@ -1,5 +1,6 @@
 from PySide6.QtWidgets import QMainWindow
 from gui.qt.MainWindow_ui import Ui_MainWindow
+from gui.models.data import getAllServicesName, getHostname
 import modules.confMgr.load_conf_file as conf
 
 
@@ -9,10 +10,13 @@ class MainWindow(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self._addBackupDataToBackupList()
-
+        self._addServiceDataToServiceList()
+        self.ui.endpointCountLabel.setText(str(0))
+        self.ui.endpointNameLabel.setText(getHostname())
     # Backup Data/Functions
 
     def _addBackupDataToBackupList(self):
+        # Change Data manipulation to the models folder.
         data = conf.getBackupDataFromConf()
         dataFolders = data.get("folders")
         dataOutputs = data.get("outputs")
@@ -24,6 +28,9 @@ class MainWindow(QMainWindow):
         self.ui.backupList.addItems(manipulatedData)
 
     # Service Data/Functions
+
+    def _addServiceDataToServiceList(self):
+        self.ui.serviceList.addItems(getAllServicesName())
 
     # Backup Buttons:
 
