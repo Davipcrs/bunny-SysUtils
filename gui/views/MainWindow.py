@@ -8,9 +8,11 @@ class MainWindow(QMainWindow):
         super(MainWindow, self).__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        self._addBackupDataToList()
+        self._addBackupDataToBackupList()
 
-    def _addBackupDataToList(self):
+    # Backup Data/Functions
+
+    def _addBackupDataToBackupList(self):
         data = conf.getBackupDataFromConf()
         dataFolders = data.get("folders")
         dataOutputs = data.get("outputs")
@@ -20,3 +22,24 @@ class MainWindow(QMainWindow):
             manipulatedData.append(dataFolders[i] + "  -->  " + dataOutputs[i])
             i = i + 1
         self.ui.backupList.addItems(manipulatedData)
+
+    # Service Data/Functions
+
+    # Backup Buttons:
+
+    def _buttonAddFolderToBackup():
+        pass
+
+    def _buttonStartBackup():
+        pass
+
+    def _buttonRemoveFromBackup():
+        pass
+
+    # Service Buttons:
+
+    def _buttonStartService():
+        pass
+
+    def _buttonStopService():
+        pass
