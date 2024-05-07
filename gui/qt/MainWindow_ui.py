@@ -16,11 +16,10 @@ from PySide6.QtGui import (QAction, QBrush, QColor, QConicalGradient,
     QIcon, QImage, QKeySequence, QLinearGradient,
     QPainter, QPalette, QPixmap, QRadialGradient,
     QTransform)
-from PySide6.QtWidgets import (QApplication, QComboBox, QGridLayout, QHBoxLayout,
-    QLabel, QLineEdit, QListWidget, QListWidgetItem,
-    QMainWindow, QMenu, QMenuBar, QPushButton,
-    QSizePolicy, QStatusBar, QTabWidget, QVBoxLayout,
-    QWidget)
+from PySide6.QtWidgets import (QApplication, QGridLayout, QHBoxLayout, QLabel,
+    QListWidget, QListWidgetItem, QMainWindow, QMenu,
+    QMenuBar, QPushButton, QSizePolicy, QStatusBar,
+    QTabWidget, QVBoxLayout, QWidget)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -211,41 +210,10 @@ class Ui_MainWindow(object):
         self.verticalLayout_2 = QVBoxLayout()
         self.verticalLayout_2.setSpacing(0)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
-        self.lineEdit_2 = QLineEdit(self.ServiceTab)
-        self.lineEdit_2.setObjectName(u"lineEdit_2")
-        self.lineEdit_2.setMinimumSize(QSize(0, 40))
+        self.addServiceButton = QPushButton(self.ServiceTab)
+        self.addServiceButton.setObjectName(u"addServiceButton")
 
-        self.verticalLayout_2.addWidget(self.lineEdit_2)
-
-        self.lineEdit = QLineEdit(self.ServiceTab)
-        self.lineEdit.setObjectName(u"lineEdit")
-        self.lineEdit.setMinimumSize(QSize(0, 40))
-
-        self.verticalLayout_2.addWidget(self.lineEdit)
-
-        self.comboBox_2 = QComboBox(self.ServiceTab)
-        self.comboBox_2.setObjectName(u"comboBox_2")
-        self.comboBox_2.setMinimumSize(QSize(0, 50))
-
-        self.verticalLayout_2.addWidget(self.comboBox_2)
-
-        self.comboBox = QComboBox(self.ServiceTab)
-        self.comboBox.setObjectName(u"comboBox")
-        self.comboBox.setMinimumSize(QSize(0, 50))
-
-        self.verticalLayout_2.addWidget(self.comboBox)
-
-        self.comboBox_3 = QComboBox(self.ServiceTab)
-        self.comboBox_3.setObjectName(u"comboBox_3")
-        self.comboBox_3.setMinimumSize(QSize(0, 50))
-
-        self.verticalLayout_2.addWidget(self.comboBox_3)
-
-        self.comboBox_4 = QComboBox(self.ServiceTab)
-        self.comboBox_4.setObjectName(u"comboBox_4")
-        self.comboBox_4.setMinimumSize(QSize(0, 50))
-
-        self.verticalLayout_2.addWidget(self.comboBox_4)
+        self.verticalLayout_2.addWidget(self.addServiceButton)
 
 
         self.horizontalLayout_2.addLayout(self.verticalLayout_2)
@@ -319,15 +287,15 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout = QHBoxLayout()
         self.horizontalLayout.setObjectName(u"horizontalLayout")
-        self.StartServiceButton = QPushButton(self.ServiceTab)
-        self.StartServiceButton.setObjectName(u"StartServiceButton")
+        self.startServiceButton = QPushButton(self.ServiceTab)
+        self.startServiceButton.setObjectName(u"startServiceButton")
 
-        self.horizontalLayout.addWidget(self.StartServiceButton)
+        self.horizontalLayout.addWidget(self.startServiceButton)
 
-        self.AddServiceButton = QPushButton(self.ServiceTab)
-        self.AddServiceButton.setObjectName(u"AddServiceButton")
+        self.stopServiceButton = QPushButton(self.ServiceTab)
+        self.stopServiceButton.setObjectName(u"stopServiceButton")
 
-        self.horizontalLayout.addWidget(self.AddServiceButton)
+        self.horizontalLayout.addWidget(self.stopServiceButton)
 
 
         self.verticalLayout_3.addLayout(self.horizontalLayout)
@@ -474,8 +442,9 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
         self.endpointNameLabel.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
         self.endpointCountLabel.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
-        self.StartServiceButton.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
-        self.AddServiceButton.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
+        self.addServiceButton.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
+        self.startServiceButton.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
+        self.stopServiceButton.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.ServiceTab), QCoreApplication.translate("MainWindow", u"Service", None))
         self.searchFolderButton.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
         self.bkpOkButton.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))

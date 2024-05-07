@@ -1049,62 +1049,9 @@
              <number>0</number>
             </property>
             <item>
-             <widget class="QLineEdit" name="lineEdit_2">
-              <property name="minimumSize">
-               <size>
-                <width>0</width>
-                <height>40</height>
-               </size>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLineEdit" name="lineEdit">
-              <property name="minimumSize">
-               <size>
-                <width>0</width>
-                <height>40</height>
-               </size>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QComboBox" name="comboBox_2">
-              <property name="minimumSize">
-               <size>
-                <width>0</width>
-                <height>50</height>
-               </size>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QComboBox" name="comboBox">
-              <property name="minimumSize">
-               <size>
-                <width>0</width>
-                <height>50</height>
-               </size>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QComboBox" name="comboBox_3">
-              <property name="minimumSize">
-               <size>
-                <width>0</width>
-                <height>50</height>
-               </size>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QComboBox" name="comboBox_4">
-              <property name="minimumSize">
-               <size>
-                <width>0</width>
-                <height>50</height>
-               </size>
+             <widget class="QPushButton" name="addServiceButton">
+              <property name="text">
+               <string>PushButton</string>
               </property>
              </widget>
             </item>
@@ -1591,14 +1538,14 @@
             <item>
              <layout class="QHBoxLayout" name="horizontalLayout">
               <item>
-               <widget class="QPushButton" name="StartServiceButton">
+               <widget class="QPushButton" name="startServiceButton">
                 <property name="text">
                  <string>PushButton</string>
                 </property>
                </widget>
               </item>
               <item>
-               <widget class="QPushButton" name="AddServiceButton">
+               <widget class="QPushButton" name="stopServiceButton">
                 <property name="text">
                  <string>PushButton</string>
                 </property>

@@ -5,7 +5,7 @@ import modules.confMgr.load_conf_file as loadConf
 import modules.serviceMgr.service_manager as SrvMgr
 from gui.gui import gui
 
-
+"""
 def main():
     backup = bkp.BackupUtils()
 
@@ -18,7 +18,7 @@ def main():
         time.sleep(0.3)
         print(backup.totalFiles)
 
-
+"""
 if __name__ == '__main__':
     gui()
     # main()

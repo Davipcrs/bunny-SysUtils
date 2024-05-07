@@ -1,6 +1,7 @@
 from PySide6.QtWidgets import QMainWindow
 from gui.qt.MainWindow_ui import Ui_MainWindow
 from gui.models.data import getAllServicesName, getHostname
+from gui.views.AddServiceDialog import AddServiceDialog
 import modules.confMgr.load_conf_file as conf
 
 
@@ -13,6 +14,7 @@ class MainWindow(QMainWindow):
         self._addServiceDataToServiceList()
         self.ui.endpointCountLabel.setText(str(0))
         self.ui.endpointNameLabel.setText(getHostname())
+        self.ui.addServiceButton.clicked.connect(self._buttonAddService)
     # Backup Data/Functions
 
     def _addBackupDataToBackupList(self):
@@ -50,3 +52,8 @@ class MainWindow(QMainWindow):
 
     def _buttonStopService():
         pass
+
+    def _buttonAddService(self):
+        self.addServiceDialog = AddServiceDialog()
+        self.addServiceDialog.show()
+        print("HEHE")
