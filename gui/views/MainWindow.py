@@ -1,8 +1,7 @@
 from PySide6.QtWidgets import QMainWindow
 from gui.qt.MainWindow_ui import Ui_MainWindow
-from gui.models.data import getAllServicesName, getHostname
+from gui.models.data import getAllServicesName, getHostname, getAllBackupPathsToUI
 from gui.views.AddServiceDialog import AddServiceDialog
-import modules.confMgr.load_conf_file as conf
 
 
 class MainWindow(QMainWindow):
@@ -18,16 +17,7 @@ class MainWindow(QMainWindow):
     # Backup Data/Functions
 
     def _addBackupDataToBackupList(self):
-        # Change Data manipulation to the models folder.
-        data = conf.getBackupDataFromConf()
-        dataFolders = data.get("folders")
-        dataOutputs = data.get("outputs")
-        manipulatedData = []
-        i = 0
-        for i in range(len(dataFolders)):
-            manipulatedData.append(dataFolders[i] + "  -->  " + dataOutputs[i])
-            i = i + 1
-        self.ui.backupList.addItems(manipulatedData)
+        self.ui.backupList.addItems(getAllBackupPathsToUI())
 
     # Service Data/Functions
 
@@ -56,4 +46,3 @@ class MainWindow(QMainWindow):
     def _buttonAddService(self):
         self.addServiceDialog = AddServiceDialog()
         self.addServiceDialog.show()
-        print("HEHE")
