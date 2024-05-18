@@ -28,3 +28,7 @@ def getAllBackupPathsToUI():
 
 def getHostname():
     return SysInfo().getHostname()
+
+
+def startBackup():
+    return BackupUtils().multiBackups()
