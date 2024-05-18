@@ -1,6 +1,6 @@
 from PySide6.QtWidgets import QMainWindow, QFileDialog
 from gui.qt.MainWindow_ui import Ui_MainWindow
-from gui.models.data import getAllServicesName, getHostname, getAllBackupPathsToUI, startBackup
+from gui.models.data import getAllServicesName, getHostname, getAllBackupPathsToUI, startBackup, startService
 from gui.views.AddServiceDialog import AddServiceDialog
 
 
@@ -18,6 +18,7 @@ class MainWindow(QMainWindow):
             self._buttonAddDirectoryToBackup)
         self.ui.bkpOkButton.clicked.connect(
             self._buttonStartBackup)  # Refactor
+        self.ui.startServiceButton.clicked.connect(self._buttonStartService)
 
     # ========================
     # Backup Data/Functions
@@ -63,8 +64,14 @@ class MainWindow(QMainWindow):
     # Service Buttons
     # ========================
 
-    def _buttonStartService():
+    def _buttonStartService(self):
+        """Start the currently selected service on Windows, and start a Dialog Window with the status
 
+
+        Require Admin Rights to start a service
+        """
+        # print(self.ui.serviceList.currentIndex().data())
+        startService(serviceName=self.ui.serviceList.currentIndex().data())
         pass
 
     def _buttonStopService():

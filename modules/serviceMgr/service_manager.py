@@ -69,8 +69,8 @@ class ServiceManagement():
         serviceHandle = winS.OpenService(
             scHandle, service_name, winS.SERVICE_START)
 
-        winS.StartService(serviceHandle)
-        return
+        winS.StartService(serviceHandle, None)
+        return serviceHandle
 
     def stopService(self,  service_name: str):
         scHandle = winS.OpenSCManager(None, None, winS.SC_MANAGER_CONNECT)
