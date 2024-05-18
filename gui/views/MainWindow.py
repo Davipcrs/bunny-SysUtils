@@ -65,14 +65,13 @@ class MainWindow(QMainWindow):
     # ========================
 
     def _buttonStartService(self):
-        """Start the currently selected service on Windows, and start a Dialog Window with the status
-
+        """Start the currently selected service on Windows
 
         Require Admin Rights to start a service
         """
+        # Needs to start a Dialog Window with the status
         # print(self.ui.serviceList.currentIndex().data())
         startService(serviceName=self.ui.serviceList.currentIndex().data())
-        pass
 
     def _buttonStopService():
         pass
