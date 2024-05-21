@@ -78,7 +78,7 @@ class ServiceManagement():
             scHandle, service_name, winS.SERVICE_CHANGE_CONFIG)
 
         winS.ControlService(serviceHandle, winS.SERVICE_STOP)
-        return
+        return serviceHandle
 
     def editService(self):
         pass

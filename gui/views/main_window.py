@@ -1,7 +1,9 @@
 from PySide6.QtWidgets import QMainWindow, QFileDialog
 from gui.qt.MainWindow_ui import Ui_MainWindow
-from gui.models.data import getAllServicesName, getHostname, getAllBackupPathsToUI, startBackup, startService
-from gui.views.AddServiceDialog import AddServiceDialog
+from gui.models.data import getAllServicesName, getHostname, getAllBackupPathsToUI
+from gui.models.interfaces.service_interface import startService, stopService
+from gui.models.interfaces.backup_interface import startBackup
+from gui.views.add_service_dialog import AddServiceDialog
 
 
 class MainWindow(QMainWindow):
@@ -49,8 +51,11 @@ class MainWindow(QMainWindow):
         # https://stackoverflow.com/questions/74557955/how-to-get-a-directory-path-in-pyqt6-via-qfiledialog
         inputDir = QFileDialog.getExistingDirectory(
             self,  options=QFileDialog.Option.DontUseNativeDialog, caption="Select directory",)
-        # outputZip = QFileDialog.
+        outputZip = QFileDialog.getSaveFileName(
+            self, options=QFileDialog.Option.DontUseNativeDialog, caption="Save output zip")
+        # Add Conf file Edit func.
         print(inputDir)
+        print(outputZip)
 
     def _buttonStartBackup():
         """Calls the backup init func"""
@@ -58,6 +63,7 @@ class MainWindow(QMainWindow):
         pass
 
     def _buttonRemoveFromBackup():
+        # Add Conf file Edit func
         pass
 
     # ========================
@@ -73,7 +79,13 @@ class MainWindow(QMainWindow):
         # print(self.ui.serviceList.currentIndex().data())
         startService(serviceName=self.ui.serviceList.currentIndex().data())
 
-    def _buttonStopService():
+    def _buttonStopService(self):
+        """Stop the currently selected service on Windows
+
+        Require Admin Rights to stop a service
+        """
+        # Needs to start a Dialog Window with the status
+        stopService(serviceName=self.ui.serviceList.currentIndex().data())
         pass
 
     def _buttonAddService(self):

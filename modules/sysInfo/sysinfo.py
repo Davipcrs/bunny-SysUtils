@@ -87,6 +87,12 @@ class SysInfo():
 
         return dict()
 
+    def getWinStoreApps(self) -> dict:
+        pass
+
+    def getUserPermission(self):
+        pass
+
 
 # print(SysInfo().getHardwareInfo()[2])
 # for info in SysInfo().getSoftwareInstalledInfo():

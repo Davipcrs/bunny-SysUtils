@@ -1,4 +1,3 @@
-from modules.backup.backups import BackupUtils
 import modules.confMgr.load_conf_file as conf
 from modules.serviceMgr.service_manager import ServiceManagement, Service
 from modules.sysInfo.sysinfo import SysInfo
@@ -28,20 +27,3 @@ def getAllBackupPathsToUI():
 
 def getHostname():
     return SysInfo().getHostname()
-
-
-def startBackup():
-    return BackupUtils().multiBackups()
-
-
-def startService(serviceName: str):
-    srvMgr = ServiceManagement()
-    rawData = srvMgr.getAllServicesStatus()
-    servicesNames = []
-    for data in rawData:
-        servicesNames.append(data[1])
-
-    serviceHandle = srvMgr.startService(
-        rawData[servicesNames.index(serviceName)][0])
-
-    return serviceHandle
