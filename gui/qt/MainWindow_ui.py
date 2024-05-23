@@ -118,23 +118,6 @@ class Ui_MainWindow(object):
         self.centralwidget.setObjectName(u"centralwidget")
         self.gridLayout = QGridLayout(self.centralwidget)
         self.gridLayout.setObjectName(u"gridLayout")
-        self.verticalLayout = QVBoxLayout()
-        self.verticalLayout.setObjectName(u"verticalLayout")
-        self.endpointNameLabel = QLabel(self.centralwidget)
-        self.endpointNameLabel.setObjectName(u"endpointNameLabel")
-        self.endpointNameLabel.setMinimumSize(QSize(120, 120))
-
-        self.verticalLayout.addWidget(self.endpointNameLabel)
-
-        self.endpointCountLabel = QLabel(self.centralwidget)
-        self.endpointCountLabel.setObjectName(u"endpointCountLabel")
-        self.endpointCountLabel.setMinimumSize(QSize(120, 120))
-
-        self.verticalLayout.addWidget(self.endpointCountLabel)
-
-
-        self.gridLayout.addLayout(self.verticalLayout, 0, 0, 1, 1)
-
         self.tabWidget = QTabWidget(self.centralwidget)
         self.tabWidget.setObjectName(u"tabWidget")
         palette1 = QPalette()
@@ -469,27 +452,23 @@ class Ui_MainWindow(object):
 #endif
         palette4.setBrush(QPalette.Disabled, QPalette.Accent, brush9)
         self.SysInfoTab.setPalette(palette4)
+        self.SysInfoTab.setAutoFillBackground(True)
         self.gridLayout_4 = QGridLayout(self.SysInfoTab)
         self.gridLayout_4.setObjectName(u"gridLayout_4")
-        self.pushButton_3 = QPushButton(self.SysInfoTab)
-        self.pushButton_3.setObjectName(u"pushButton_3")
+        self.sysInfoGetHardwareInfoButton = QPushButton(self.SysInfoTab)
+        self.sysInfoGetHardwareInfoButton.setObjectName(u"sysInfoGetHardwareInfoButton")
 
-        self.gridLayout_4.addWidget(self.pushButton_3, 3, 0, 1, 1)
+        self.gridLayout_4.addWidget(self.sysInfoGetHardwareInfoButton, 0, 0, 1, 1)
 
-        self.pushButton_2 = QPushButton(self.SysInfoTab)
-        self.pushButton_2.setObjectName(u"pushButton_2")
+        self.sysInfoGetInstalledSoftwareButton = QPushButton(self.SysInfoTab)
+        self.sysInfoGetInstalledSoftwareButton.setObjectName(u"sysInfoGetInstalledSoftwareButton")
 
-        self.gridLayout_4.addWidget(self.pushButton_2, 0, 0, 1, 1)
+        self.gridLayout_4.addWidget(self.sysInfoGetInstalledSoftwareButton, 2, 0, 1, 1)
 
-        self.pushButton_4 = QPushButton(self.SysInfoTab)
-        self.pushButton_4.setObjectName(u"pushButton_4")
+        self.sysInfoGetOsInfoButton = QPushButton(self.SysInfoTab)
+        self.sysInfoGetOsInfoButton.setObjectName(u"sysInfoGetOsInfoButton")
 
-        self.gridLayout_4.addWidget(self.pushButton_4, 2, 0, 1, 1)
-
-        self.pushButton_5 = QPushButton(self.SysInfoTab)
-        self.pushButton_5.setObjectName(u"pushButton_5")
-
-        self.gridLayout_4.addWidget(self.pushButton_5, 1, 0, 1, 1)
+        self.gridLayout_4.addWidget(self.sysInfoGetOsInfoButton, 1, 0, 1, 1)
 
         self.tabWidget.addTab(self.SysInfoTab, "")
         self.RegCleanerTab = QWidget()
@@ -553,6 +532,7 @@ class Ui_MainWindow(object):
 #endif
         palette5.setBrush(QPalette.Disabled, QPalette.Accent, brush9)
         self.RegCleanerTab.setPalette(palette5)
+        self.RegCleanerTab.setAutoFillBackground(True)
         self.gridLayout_5 = QGridLayout(self.RegCleanerTab)
         self.gridLayout_5.setObjectName(u"gridLayout_5")
         self.pushButton = QPushButton(self.RegCleanerTab)
@@ -568,6 +548,23 @@ class Ui_MainWindow(object):
         self.tabWidget.addTab(self.RegCleanerTab, "")
 
         self.gridLayout.addWidget(self.tabWidget, 0, 1, 1, 1)
+
+        self.verticalLayout = QVBoxLayout()
+        self.verticalLayout.setObjectName(u"verticalLayout")
+        self.endpointNameLabel = QLabel(self.centralwidget)
+        self.endpointNameLabel.setObjectName(u"endpointNameLabel")
+        self.endpointNameLabel.setMinimumSize(QSize(120, 120))
+
+        self.verticalLayout.addWidget(self.endpointNameLabel)
+
+        self.endpointCountLabel = QLabel(self.centralwidget)
+        self.endpointCountLabel.setObjectName(u"endpointCountLabel")
+        self.endpointCountLabel.setMinimumSize(QSize(120, 120))
+
+        self.verticalLayout.addWidget(self.endpointCountLabel)
+
+
+        self.gridLayout.addLayout(self.verticalLayout, 0, 0, 1, 1)
 
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
@@ -590,7 +587,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(2)
+        self.tabWidget.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -598,8 +595,6 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
-        self.endpointNameLabel.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
-        self.endpointCountLabel.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
         self.addServiceButton.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
         self.startServiceButton.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
         self.stopServiceButton.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
@@ -608,13 +603,14 @@ class Ui_MainWindow(object):
         self.bkpOkButton.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
         self.bkpCancelButton.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.BackupTab), QCoreApplication.translate("MainWindow", u"Backup", None))
-        self.pushButton_3.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
-        self.pushButton_2.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
-        self.pushButton_4.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
-        self.pushButton_5.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
+        self.sysInfoGetHardwareInfoButton.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
+        self.sysInfoGetInstalledSoftwareButton.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
+        self.sysInfoGetOsInfoButton.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.SysInfoTab), QCoreApplication.translate("MainWindow", u"System Info", None))
         self.pushButton.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.RegCleanerTab), QCoreApplication.translate("MainWindow", u"Registry Cleaner", None))
+        self.endpointNameLabel.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
+        self.endpointCountLabel.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
         self.menuFIle.setTitle(QCoreApplication.translate("MainWindow", u"FIle", None))
         self.menuView.setTitle(QCoreApplication.translate("MainWindow", u"View", None))
         self.menuOptions.setTitle(QCoreApplication.translate("MainWindow", u"Options", None))

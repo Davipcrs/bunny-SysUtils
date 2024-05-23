@@ -1,9 +1,11 @@
-import time
-import modules.backup.backups as bkp
-import modules.confMgr.create_conf_file as createConf
-import modules.confMgr.load_conf_file as loadConf
-import modules.serviceMgr.service_manager as SrvMgr
+# import time
+# import modules.backup.backups as bkp
+from modules.confMgr.create_conf_file import createConfFile
+# import modules.confMgr.load_conf_file as loadConf
+# import modules.confMgr.edit_conf_file as e
+# import modules.serviceMgr.service_manager as SrvMgr
 from gui.gui import gui
+import os
 
 """
 def main():
@@ -20,11 +22,15 @@ def main():
 
 """
 if __name__ == '__main__':
-    gui()
+    # e.addBackupFolderAndOutput("E:/src/sh-scripts", "E:/src/sh-scripts.zip")
+    if os.path.exists(".\\config.json"):
+        gui()
+    else:
+        createConfFile()
+
     # main()
     # print(bkp.BackupUtils().multiBackups())
     # print("Compiled")
 
     # print(r"C:\Program Files (x86)\2DYTDownloader\main.exe")
     # SrvMgr.
-    pass

@@ -2,7 +2,7 @@ from PySide6.QtWidgets import QMainWindow, QFileDialog
 from gui.qt.MainWindow_ui import Ui_MainWindow
 from gui.models.data import getAllServicesName, getHostname, getAllBackupPathsToUI
 from gui.models.interfaces.service_interface import startService, stopService
-from gui.models.interfaces.backup_interface import startBackup
+from gui.models.interfaces.backup_interface import startBackup, addBackupFolderAndOutput
 from gui.views.add_service_dialog import AddServiceDialog
 
 
@@ -21,6 +21,23 @@ class MainWindow(QMainWindow):
         self.ui.bkpOkButton.clicked.connect(
             self._buttonStartBackup)  # Refactor
         self.ui.startServiceButton.clicked.connect(self._buttonStartService)
+
+    # ========================
+    # Button Text
+    # ========================
+
+        self.ui.bkpOkButton.setText("Init Backup")
+        self.ui.searchFolderButton.setText("Add Folders to Backup")
+        self.ui.bkpCancelButton.setText("Remove Backup")
+
+        self.ui.addServiceButton.setText("Add Service")
+        self.ui.stopServiceButton.setText("Stop Service")
+        self.ui.startServiceButton.setText("Start Service")
+
+        self.ui.sysInfoGetHardwareInfoButton.setText("Hardware Info")
+        self.ui.sysInfoGetInstalledSoftwareButton.setText(
+            "Instelled Software (Program Files)")
+        self.ui.sysInfoGetOsInfoButton.setText("OS info")
 
     # ========================
     # Backup Data/Functions
@@ -51,13 +68,18 @@ class MainWindow(QMainWindow):
         # https://stackoverflow.com/questions/74557955/how-to-get-a-directory-path-in-pyqt6-via-qfiledialog
         inputDir = QFileDialog.getExistingDirectory(
             self,  options=QFileDialog.Option.DontUseNativeDialog, caption="Select directory",)
+        if inputDir == '' or inputDir == None:
+            return
         outputZip = QFileDialog.getSaveFileName(
             self, options=QFileDialog.Option.DontUseNativeDialog, caption="Save output zip")
+        if outputZip == '' or outputZip == None:
+            return
         # Add Conf file Edit func.
-        print(inputDir)
-        print(outputZip)
+        addBackupFolderAndOutput(inputDir, outputZip[0])
+        self.ui.backupList.clear()
+        self._addBackupDataToBackupList()
 
-    def _buttonStartBackup():
+    def _buttonStartBackup(self):
         """Calls the backup init func"""
         startBackup()
         pass

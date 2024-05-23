@@ -517,36 +517,6 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="0">
-     <layout class="QVBoxLayout" name="verticalLayout">
-      <item>
-       <widget class="QLabel" name="endpointNameLabel">
-        <property name="minimumSize">
-         <size>
-          <width>120</width>
-          <height>120</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>TextLabel</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="endpointCountLabel">
-        <property name="minimumSize">
-         <size>
-          <width>120</width>
-          <height>120</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>TextLabel</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
     <item row="0" column="1">
      <widget class="QTabWidget" name="tabWidget">
       <property name="palette">
@@ -1028,7 +998,7 @@
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
       <property name="movable">
        <bool>true</bool>
@@ -2547,33 +2517,29 @@
          </disabled>
         </palette>
        </property>
+       <property name="autoFillBackground">
+        <bool>true</bool>
+       </property>
        <attribute name="title">
         <string>System Info</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout_4">
-        <item row="3" column="0">
-         <widget class="QPushButton" name="pushButton_3">
-          <property name="text">
-           <string>PushButton</string>
-          </property>
-         </widget>
-        </item>
         <item row="0" column="0">
-         <widget class="QPushButton" name="pushButton_2">
+         <widget class="QPushButton" name="sysInfoGetHardwareInfoButton">
           <property name="text">
            <string>PushButton</string>
           </property>
          </widget>
         </item>
         <item row="2" column="0">
-         <widget class="QPushButton" name="pushButton_4">
+         <widget class="QPushButton" name="sysInfoGetInstalledSoftwareButton">
           <property name="text">
            <string>PushButton</string>
           </property>
          </widget>
         </item>
         <item row="1" column="0">
-         <widget class="QPushButton" name="pushButton_5">
+         <widget class="QPushButton" name="sysInfoGetOsInfoButton">
           <property name="text">
            <string>PushButton</string>
           </property>
@@ -3051,6 +3017,9 @@
          </disabled>
         </palette>
        </property>
+       <property name="autoFillBackground">
+        <bool>true</bool>
+       </property>
        <attribute name="title">
         <string>Registry Cleaner</string>
        </attribute>
@@ -3068,6 +3037,36 @@
        </layout>
       </widget>
      </widget>
+    </item>
+    <item row="0" column="0">
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QLabel" name="endpointNameLabel">
+        <property name="minimumSize">
+         <size>
+          <width>120</width>
+          <height>120</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>TextLabel</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="endpointCountLabel">
+        <property name="minimumSize">
+         <size>
+          <width>120</width>
+          <height>120</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>TextLabel</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </item>
    </layout>
   </widget>
