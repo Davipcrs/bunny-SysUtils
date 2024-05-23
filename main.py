@@ -27,6 +27,7 @@ if __name__ == '__main__':
         gui()
     else:
         createConfFile()
+        gui()
 
     # main()
     # print(bkp.BackupUtils().multiBackups())
