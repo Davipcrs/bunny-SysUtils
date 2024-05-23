@@ -1,5 +1,6 @@
 # import time
 # import modules.backup.backups as bkp
+import multiprocessing
 from modules.confMgr.create_conf_file import createConfFile
 # import modules.confMgr.load_conf_file as loadConf
 # import modules.confMgr.edit_conf_file as e
@@ -23,6 +24,7 @@ def main():
 """
 if __name__ == '__main__':
     # e.addBackupFolderAndOutput("E:/src/sh-scripts", "E:/src/sh-scripts.zip")
+    multiprocessing.freeze_support()
     if os.path.exists(".\\config.json"):
         gui()
     else:
