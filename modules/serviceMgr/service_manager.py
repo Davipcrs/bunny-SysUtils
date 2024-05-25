@@ -75,9 +75,9 @@ class ServiceManagement():
     def stopService(self,  service_name: str):
         scHandle = winS.OpenSCManager(None, None, winS.SC_MANAGER_CONNECT)
         serviceHandle = winS.OpenService(
-            scHandle, service_name, winS.SERVICE_CHANGE_CONFIG)
+            scHandle, service_name, winS.SERVICE_STOP)
 
-        winS.ControlService(serviceHandle, winS.SERVICE_STOP)
+        winS.ControlService(serviceHandle, winS.SERVICE_CONTROL_STOP)
         return serviceHandle
 
     def editService(self):

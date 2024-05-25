@@ -1,9 +1,10 @@
 from PySide6.QtWidgets import QMainWindow, QFileDialog
 from gui.qt.MainWindow_ui import Ui_MainWindow
 from gui.models.data import getAllServicesName, getHostname, getAllBackupPathsToUI
-from gui.models.interfaces.service_interface import startService, stopService
-from gui.models.interfaces.backup_interface import startBackup, addBackupFolderAndOutput
+from gui.models.interfaces.service_interface import startService, stopService, serviceInfo
+from gui.models.interfaces.backup_interface import startBackup, addBackupFolderAndOutput, removeFromBackup
 from gui.views.add_service_dialog import AddServiceDialog
+from gui.views.service_status_dialog import ServiceStatusDialog
 
 
 class MainWindow(QMainWindow):
@@ -21,6 +22,7 @@ class MainWindow(QMainWindow):
         self.ui.bkpOkButton.clicked.connect(
             self._buttonStartBackup)  # Refactor
         self.ui.startServiceButton.clicked.connect(self._buttonStartService)
+        self.ui.stopServiceButton.clicked.connect(self._buttonStopService)
 
     # ========================
     # Button Text
@@ -82,11 +84,10 @@ class MainWindow(QMainWindow):
     def _buttonStartBackup(self):
         """Calls the backup init func"""
         startBackup()
-        pass
 
     def _buttonRemoveFromBackup():
         # Add Conf file Edit func
-        pass
+        removeFromBackup()
 
     # ========================
     # Service Buttons
@@ -100,6 +101,15 @@ class MainWindow(QMainWindow):
         # Needs to start a Dialog Window with the status
         # print(self.ui.serviceList.currentIndex().data())
         startService(serviceName=self.ui.serviceList.currentIndex().data())
+        self.serviceStatusDialog = ServiceStatusDialog()
+        if serviceInfo(self.ui.serviceList.currentIndex().data())["CurrentState"] == 4:
+            self.serviceStatusDialog.ui.serviceStatusLabel.setText("Service: " + str(self.ui.serviceList.currentIndex().data(
+            )) + " Starting... \n" + "Service status: running PID: " + str(serviceInfo(self.ui.serviceList.currentIndex().data())["ProcessId"]))
+        else:
+            self.serviceStatusDialog.ui.serviceStatusLabel.setText(
+                "Service" + str(self.ui.serviceList.currentIndex().data()) + "Starting...\n")
+        print(serviceInfo(self.ui.serviceList.currentIndex().data()))
+        self.serviceStatusDialog.show()
 
     def _buttonStopService(self):
         """Stop the currently selected service on Windows
@@ -107,7 +117,17 @@ class MainWindow(QMainWindow):
         Require Admin Rights to stop a service
         """
         # Needs to start a Dialog Window with the status
+        # REFACTOR
         stopService(serviceName=self.ui.serviceList.currentIndex().data())
+        self.serviceStatusDialog = ServiceStatusDialog()
+        if serviceInfo(self.ui.serviceList.currentIndex().data())["CurrentState"] == 4:
+            self.serviceStatusDialog.ui.serviceStatusLabel.setText("Service: " + str(self.ui.serviceList.currentIndex().data(
+            )) + " Starting... \n" + "Service status: running PID: " + str(serviceInfo(self.ui.serviceList.currentIndex().data())["ProcessId"]))
+        else:
+            self.serviceStatusDialog.ui.serviceStatusLabel.setText(
+                "Service" + str(self.ui.serviceList.currentIndex().data()) + "Starting...\n")
+        print(serviceInfo(self.ui.serviceList.currentIndex().data()))
+        self.serviceStatusDialog.show()
         pass
 
     def _buttonAddService(self):

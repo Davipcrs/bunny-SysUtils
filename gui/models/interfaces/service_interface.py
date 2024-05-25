@@ -25,3 +25,8 @@ def stopService(serviceName: str):
         rawData[servicesNames.index(serviceName)][0])
 
     return serviceHandle
+
+
+def serviceInfo(serviceName: str):
+    srvMgr = ServiceManagement()
+    return srvMgr.getServiceStatus(service_name=serviceName)
