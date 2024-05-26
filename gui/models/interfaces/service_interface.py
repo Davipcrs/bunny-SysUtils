@@ -30,3 +30,7 @@ def stopService(serviceName: str):
 def serviceInfo(serviceName: str):
     srvMgr = ServiceManagement()
     return srvMgr.getServiceStatus(service_name=serviceName)
+
+
+def createService():
+    pass

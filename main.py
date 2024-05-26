@@ -6,7 +6,9 @@ from modules.confMgr.create_conf_file import createConfFile
 # import modules.confMgr.edit_conf_file as e
 # import modules.serviceMgr.service_manager as SrvMgr
 from gui.gui import gui
+from modules.utils.uac import isAdmin, elevate
 import os
+from gui.models.interfaces.sysinfo_interface import getAllHardwareInfo
 
 """
 def main():
@@ -22,18 +24,16 @@ def main():
         print(backup.totalFiles)
 
 """
+
+
 if __name__ == '__main__':
-    # e.addBackupFolderAndOutput("E:/src/sh-scripts", "E:/src/sh-scripts.zip")
     multiprocessing.freeze_support()
+    if isAdmin():
+        pass
+    else:
+        elevate()
     if os.path.exists(".\\config.json"):
         gui()
     else:
         createConfFile()
         gui()
-
-    # main()
-    # print(bkp.BackupUtils().multiBackups())
-    # print("Compiled")
-
-    # print(r"C:\Program Files (x86)\2DYTDownloader\main.exe")
-    # SrvMgr.
