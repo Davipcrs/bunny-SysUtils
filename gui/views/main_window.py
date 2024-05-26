@@ -108,7 +108,7 @@ class MainWindow(QMainWindow):
         else:
             self.serviceStatusDialog.ui.serviceStatusLabel.setText(
                 "Service" + str(self.ui.serviceList.currentIndex().data()) + "Starting...\n")
-        print(serviceInfo(self.ui.serviceList.currentIndex().data()))
+        # print(serviceInfo(self.ui.serviceList.currentIndex().data()))
         self.serviceStatusDialog.show()
 
     def _buttonStopService(self):
@@ -120,15 +120,14 @@ class MainWindow(QMainWindow):
         # REFACTOR
         stopService(serviceName=self.ui.serviceList.currentIndex().data())
         self.serviceStatusDialog = ServiceStatusDialog()
-        if serviceInfo(self.ui.serviceList.currentIndex().data())["CurrentState"] == 4:
+        if serviceInfo(self.ui.serviceList.currentIndex().data())["CurrentState"] == 3:
             self.serviceStatusDialog.ui.serviceStatusLabel.setText("Service: " + str(self.ui.serviceList.currentIndex().data(
-            )) + " Starting... \n" + "Service status: running PID: " + str(serviceInfo(self.ui.serviceList.currentIndex().data())["ProcessId"]))
+            )) + " Stoping... \n")
         else:
             self.serviceStatusDialog.ui.serviceStatusLabel.setText(
-                "Service" + str(self.ui.serviceList.currentIndex().data()) + "Starting...\n")
-        print(serviceInfo(self.ui.serviceList.currentIndex().data()))
+                "Service: " + str(self.ui.serviceList.currentIndex().data()) + " Stoping...\n")
+        # print(serviceInfo(self.ui.serviceList.currentIndex().data()))
         self.serviceStatusDialog.show()
-        pass
 
     def _buttonAddService(self):
         """Show dialog to create the Service, with some defaults, for easy creation."""
