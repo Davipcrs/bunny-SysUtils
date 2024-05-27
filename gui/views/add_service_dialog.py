@@ -31,14 +31,14 @@ class AddServiceDialog(QDialog):
         self.ui.startTypeComboBox.addItem("1. Demand Start")
         self.ui.startTypeComboBox.addItem("2. Disabled Start")
 
-        self.ui.errorTypeComboBox
-        self.ui.errorTypeComboBox
-        self.ui.errorTypeComboBox
-        self.ui.errorTypeComboBox
+        self.ui.errorTypeComboBox.addItem("0. Ignore Error")
+        self.ui.errorTypeComboBox.addItem("1. Normal Error")
+        self.ui.errorTypeComboBox.addItem("2. Severe Error - (Default)")
+        self.ui.errorTypeComboBox.addItem("3. Critical Error")
 
-        self.ui.serviceTypeComboBox
-        self.ui.serviceTypeComboBox
-        self.ui.serviceTypeComboBox
+        self.ui.serviceTypeComboBox.addItem("0. Own Process - (Default)")
+        self.ui.serviceTypeComboBox.addItem("1. Shared Process")
+        self.ui.serviceTypeComboBox.addItem("2. Interactive Process")
 
     def _createServiceButton(self):
         display_name = self.ui.displayNameLineEdit.text()
