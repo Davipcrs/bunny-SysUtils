@@ -8,7 +8,7 @@ from modules.confMgr.create_conf_file import createConfFile
 from gui.gui import gui
 from modules.utils.uac import isAdmin, elevate
 import os
-from gui.models.interfaces.sysinfo_interface import getAllHardwareInfo
+from gui.models.interfaces.sysinfo_interface import SysInfo, getAllSoftwareInstalledInfo
 
 """
 def main():
@@ -24,8 +24,8 @@ def main():
         print(backup.totalFiles)
 
 """
-
-
+"""
+"""
 if __name__ == '__main__':
     multiprocessing.freeze_support()
     if isAdmin():

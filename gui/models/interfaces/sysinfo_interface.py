@@ -31,4 +31,8 @@ def getAllOSInfo():
 def getAllSoftwareInstalledInfo():
     sys = SysInfo()
     installed_software = sys.getSoftwareInstalledInfo()
-    pass
+    treated_data = []
+    for data in installed_software:
+        treated_data.append(
+            str(data.Name) + " -- Win-Version: " + str(data.Version))
+    return treated_data
