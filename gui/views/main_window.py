@@ -163,8 +163,12 @@ class MainWindow(QMainWindow):
     def _buttonGetHwdInfo(self):
         outputFile = QFileDialog.getSaveFileName(
             self, options=QFileDialog.Option.DontUseNativeDialog, caption="Save Hardware report", filter="Text (*.txt)")
+        data = getAllHardwareInfo()
         with open(outputFile[0], "w") as file:
-            file.write(getAllHardwareInfo())
+            for key, value in data.items():
+                print(key + ": " + str(value))
+                file.write(key + ": " + str(value))
+                file.write("\n")
 
             file.close()
 
