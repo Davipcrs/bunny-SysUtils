@@ -66,6 +66,7 @@ class MainWindow(QMainWindow):
 
     def _addServiceDataToServiceList(self):
         """Add the services names in the service list"""
+        # TODO: Implement a icon that say when the service is running or when the service is stopped
         self.ui.serviceList.addItems(getAllServicesName())
 
     # ========================
