@@ -40,6 +40,10 @@ class AddServiceDialog(QDialog):
         self.ui.serviceTypeComboBox.addItem("1. Shared Process")
         self.ui.serviceTypeComboBox.addItem("2. Interactive Process")
 
+        self.ui.confirmAddService.setText("Create Service")
+        self.ui.cancelAddService.setText("Cancel")
+        self.ui.selectExe.setText("Select File")
+
     def _createServiceButton(self):
         display_name = self.ui.displayNameLineEdit.text()
         srv_name = self.ui.nameLineEdit.text()
@@ -63,8 +67,8 @@ class AddServiceDialog(QDialog):
         else:
             service_type = 0
 
-        # createService(service_name=srv_name, service_display_name=display_name, binary_path=exe_path,
-        #              error_type=error_type, start_type=start_type, service_type=service_type)
+        createService(service_name=srv_name, service_display_name=display_name, binary_path=exe_path,
+                      error_type=error_type, start_type=start_type, service_type=service_type)
 
     def _selectExeFileButton(self):
         file_selector = QFileDialog.getOpenFileName(
