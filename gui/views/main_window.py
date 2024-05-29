@@ -3,6 +3,7 @@ from gui.qt.MainWindow_ui import Ui_MainWindow
 from gui.models.data import getAllServicesName, getHostname, getAllBackupPathsToUI
 from gui.models.interfaces.service_interface import startService, stopService, serviceInfo
 from gui.models.interfaces.backup_interface import startBackup, addBackupFolderAndOutput, removeFromBackup
+from gui.models.interfaces.sysinfo_interface import getAllHardwareInfo, getAllSoftwareInstalledInfo
 from gui.views.add_service_dialog import AddServiceDialog
 from gui.views.service_status_dialog import ServiceStatusDialog
 
@@ -23,6 +24,12 @@ class MainWindow(QMainWindow):
             self._buttonStartBackup)  # Refactor
         self.ui.startServiceButton.clicked.connect(self._buttonStartService)
         self.ui.stopServiceButton.clicked.connect(self._buttonStopService)
+        self.ui.sysInfoGetInstalledSoftwareButton.clicked.connect(
+            self._buttonGetInstalledSoftwareInfo)
+        self.ui.sysInfoGetHardwareInfoButton.clicked.connect(
+            self._buttonGetHwdInfo)
+
+        self.ui.tabWidget.removeTab(3)
 
     # ========================
     # Button Text
@@ -133,3 +140,32 @@ class MainWindow(QMainWindow):
         """Show dialog to create the Service, with some defaults, for easy creation."""
         self.addServiceDialog = AddServiceDialog()
         self.addServiceDialog.show()
+
+    # ========================
+    # SysInfo Buttons
+    # ========================
+
+    def _buttonGetInstalledSoftwareInfo(self):
+        outputFile = QFileDialog.getSaveFileName(
+            self, options=QFileDialog.Option.DontUseNativeDialog, caption="Save Installed Software report", filter="Text (*.txt)")
+
+        data = getAllSoftwareInstalledInfo()
+
+        with open(outputFile[0], "w") as file:
+            for program in data:
+                file.write(program)
+                file.write('\n')
+
+            file.close()
+
+        return
+
+    def _buttonGetHwdInfo(self):
+        outputFile = QFileDialog.getSaveFileName(
+            self, options=QFileDialog.Option.DontUseNativeDialog, caption="Save Hardware report", filter="Text (*.txt)")
+        with open(outputFile[0], "w") as file:
+            file.write(getAllHardwareInfo())
+
+            file.close()
+
+        return
